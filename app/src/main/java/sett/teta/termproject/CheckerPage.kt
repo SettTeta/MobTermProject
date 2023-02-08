@@ -18,7 +18,17 @@ class CheckerPage : AppCompatActivity() {
         setContentView(R.layout.activity_checker_page)
 
         checklistView.layoutManager = LinearLayoutManager(this)
+
+
         checklistView.adapter = ChecklistAdapter(AppData.checklists)
+    }
+
+    private fun getChecklistFromDatabaseToListView(){
+        return ChecklistRepository.get().getChecklist().observe(this){ checklist ->
+            checklist.let {
+                checklistView.adapter = ChecklistAdapter(checklist)
+            }
+        }
     }
 
     inner class ChecklistViewHolder(view: View): RecyclerView.ViewHolder(view){

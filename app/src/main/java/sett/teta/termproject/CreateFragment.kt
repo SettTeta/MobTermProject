@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_create_check.*
+import java.util.*
 
 class CreateFragment : Fragment() {
 
@@ -36,7 +37,7 @@ class CreateFragment : Fragment() {
         saveCheckout: String,
         saveNotes: String
     ) {
-        val saveCheck = Check(saveHouse, saveDate, saveCheckout, saveNotes, false)
+        val saveCheck = Check(UUID.randomUUID(),saveHouse, saveDate, saveCheckout, saveNotes, false)
         AppData.checklists = (mutableListOf(saveCheck) + AppData.checklists) as MutableList<Check>
 
     }
