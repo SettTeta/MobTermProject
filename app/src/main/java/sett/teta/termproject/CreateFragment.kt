@@ -38,7 +38,7 @@ class CreateFragment : Fragment() {
         saveNotes: String
     ) {
         val saveCheck = Check(UUID.randomUUID(),saveHouse, saveDate, saveCheckout, saveNotes, false)
-        AppData.checklists = (mutableListOf(saveCheck) + AppData.checklists) as MutableList<Check>
+        ChecklistRepository.get().addCheck(saveCheck)
 
     }
 

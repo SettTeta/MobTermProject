@@ -12,7 +12,7 @@ class ChecklistRepository private constructor(context: Context){
     private val database: ChecklistDatabase = Room.databaseBuilder(
         context.applicationContext,
         ChecklistDatabase::class.java,
-        "checkdatabase"
+        "checklist-database"
     ).build()
 
     private val checklistDao = database.checklistDao()

@@ -8,11 +8,11 @@ import java.util.UUID
 @Dao
 interface ChecklistDao {
 
-    @Query("SELECT * FROM checkdatabase")
+    @Query("SELECT * FROM checklistDatabase")
     fun getChecklist(): LiveData<List<Check>>
 
-    @Query("SELECT * FROM Check where id = (:id)")
-    fun getCheck(id:UUID): LiveData<Check>
+    @Query("SELECT * FROM checklistDatabase where id = (:id)")
+    fun getCheck(id: UUID): LiveData<Check>
 
     @Insert
     fun insertCheck(c: Check)
@@ -20,9 +20,9 @@ interface ChecklistDao {
     @Update
     fun updateCheck(c: Check)
 
-    @Query("DELETE FROM Check")
+    @Query("DELETE FROM checklistDatabase")
     fun deleteCheckList()
 
-    @Query("DELETE FROM Check where id = (:id)")
+    @Query("DELETE FROM checklistDatabase where id = (:id)")
     fun deleteCheck(id: UUID)
 }
