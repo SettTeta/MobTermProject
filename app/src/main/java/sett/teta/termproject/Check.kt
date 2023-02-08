@@ -1,7 +1,13 @@
 package sett.teta.termproject
 
-data class Check(val room: String,
-                 val date: String,
-                 val checkout: String,
-                 val notes: String,
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.util.UUID
+
+@Entity(tableName = "checklistDatabase")
+data class Check(@PrimaryKey var id: UUID,
+                 var room: String,
+                 var date: String,
+                 var checkout: String,
+                 var notes: String,
                  var checked: Boolean)
