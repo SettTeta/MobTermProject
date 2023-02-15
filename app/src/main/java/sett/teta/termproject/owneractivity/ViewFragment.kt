@@ -1,59 +1,53 @@
-package sett.teta.termproject
+package sett.teta.termproject.owneractivity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_checker_page.*
-import kotlinx.android.synthetic.main.checklist_row.*
 import kotlinx.android.synthetic.main.checklist_row.view.*
-import java.util.UUID
+import sett.teta.termproject.Check
+import sett.teta.termproject.R
+import sett.teta.termproject.checklistpackage.ChecklistRepository
 
-class CheckerPage : AppCompatActivity() {
+class ViewFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_checker_page)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_view_history, container, false)
 
-        checklistView.layoutManager = LinearLayoutManager(this)
-        getChecklistFromDatabaseToListView()
-
-    }
-
-    private fun addCheckToList(){
-        val current = Check(UUID.randomUUID(), "AC2", "12th","1220", "asdasdasd", true)
-        ChecklistRepository.get().addCheck(current)
+//        checklistView.layoutManager = LinearLayoutManager()
+//        getChecklistFromDatabaseToListView()
     }
 
     private fun getChecklistFromDatabaseToListView(){
-        return ChecklistRepository.get().getChecklist().observe(this){ checklist ->
+        return ChecklistRepository.get().getChecked().observe(viewLifecycleOwner){ checklist ->
             checklist.let {
                 checklistView.adapter = ChecklistAdapter(checklist)
-                checklist[1].checkout
-
             }
         }
     }
 
     inner class ChecklistViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val roomCheck = itemView.roomText
-        val dateCheck = itemView.dateText
-        val checkoutCheck = itemView.checkoutText
-        val noteCheck = itemView.noteText
-        val checkCheck = itemView.checkBoxButton
-        val idCheck = itemView.idText
+        val roomCheck: TextView = itemView.roomText
+        val dateCheck: TextView = itemView.dateText
+        val checkoutCheck: TextView = itemView.checkoutText
+        val noteCheck: TextView = itemView.noteText
+        val checkCheck: CheckBox = itemView.checkBoxButton
+
+        var idCheck = ""
 
         init {
-            checkCheck.setOnCheckedChangeListener { _, isChecked ->
-                if(itemView.checkBoxButton.isChecked){
 
-                }
-            }
         }
-
     }
 
     inner class ChecklistAdapter(var checks: List<Check>): RecyclerView.Adapter<ChecklistViewHolder>(){
@@ -68,7 +62,8 @@ class CheckerPage : AppCompatActivity() {
             holder.checkoutCheck.text = checks[position].checkout
             holder.noteCheck.text = checks[position].notes
             holder.checkCheck.isChecked = checks[position].checked
-            holder.idCheck.text = checks[position].id.toString()
+            holder.idCheck = checks[position].id.toString()
+
         }
 
         override fun getItemCount(): Int {
@@ -76,4 +71,5 @@ class CheckerPage : AppCompatActivity() {
         }
 
     }
+
 }

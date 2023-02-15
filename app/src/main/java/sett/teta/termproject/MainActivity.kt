@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
+import sett.teta.termproject.checkeractivity.CheckerPage
+import sett.teta.termproject.owneractivity.OwnerPage
 
 class MainActivity : AppCompatActivity() {
 

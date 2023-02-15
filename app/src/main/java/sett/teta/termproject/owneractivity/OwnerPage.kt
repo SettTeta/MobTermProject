@@ -1,10 +1,10 @@
-package sett.teta.termproject
+package sett.teta.termproject.owneractivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_owner_page.*
+import sett.teta.termproject.R
 
 class OwnerPage : AppCompatActivity() {
 

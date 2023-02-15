@@ -1,4 +1,4 @@
-package sett.teta.termproject
+package sett.teta.termproject.checklistpackage
 
 import android.app.Application
 

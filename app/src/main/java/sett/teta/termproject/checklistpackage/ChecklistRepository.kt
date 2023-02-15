@@ -1,9 +1,10 @@
-package sett.teta.termproject
+package sett.teta.termproject.checklistpackage
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.Room
 import database.ChecklistDatabase
+import sett.teta.termproject.Check
 import java.util.UUID
 import java.util.concurrent.Executors
 
@@ -21,6 +22,10 @@ class ChecklistRepository private constructor(context: Context){
     fun getChecklist(): LiveData<List<Check>> = checklistDao.getChecklist()
 
     fun getCheck(id: UUID): LiveData<Check> = checklistDao.getCheck(id)
+
+    fun getChecked(): LiveData<List<Check>> = checklistDao.getChecked()
+
+    fun getUnChecked(): LiveData<List<Check>> = checklistDao.getUnChecked()
 
     fun addCheck(check: Check){
         executor.execute{
@@ -55,7 +60,7 @@ class ChecklistRepository private constructor(context: Context){
             }
         }
 
-        fun get():ChecklistRepository{
+        fun get(): ChecklistRepository {
             return instance ?:
             throw java.lang.IllegalStateException("Repo must be initialized")
         }
