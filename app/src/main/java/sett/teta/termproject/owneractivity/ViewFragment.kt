@@ -5,12 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_checker_page.*
 import kotlinx.android.synthetic.main.checklist_row.view.*
+import kotlinx.android.synthetic.main.fragment_view_history.*
 import sett.teta.termproject.Check
 import sett.teta.termproject.R
 import sett.teta.termproject.checklistpackage.ChecklistRepository
@@ -24,14 +24,51 @@ class ViewFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_view_history, container, false)
 
-//        checklistView.layoutManager = LinearLayoutManager()
+//        histOrOngoRecView.layoutManager = LinearLayoutManager(this.context)
 //        getChecklistFromDatabaseToListView()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        histOrOngoRecView.apply {
+            layoutManager = LinearLayoutManager(activity)
+            getChecklistFromDatabaseToListView()
+        }
+
+        historyButton.setOnClickListener {
+            getAllChecklistFromDatabaseToListView()
+        }
+
+        ongoingButton.setOnClickListener {
+            getUnChecklistFromDatabaseToListView()
+        }
+
+        completedButton.setOnClickListener {
+            getChecklistFromDatabaseToListView()
+        }
     }
 
     private fun getChecklistFromDatabaseToListView(){
         return ChecklistRepository.get().getChecked().observe(viewLifecycleOwner){ checklist ->
             checklist.let {
-                checklistView.adapter = ChecklistAdapter(checklist)
+                histOrOngoRecView.adapter = ChecklistAdapter(checklist)
+            }
+        }
+    }
+
+    private fun getAllChecklistFromDatabaseToListView(){
+        return ChecklistRepository.get().getChecklist().observe(viewLifecycleOwner){ checklist ->
+            checklist.let {
+                histOrOngoRecView.adapter = ChecklistAdapter(checklist)
+            }
+        }
+    }
+
+    private fun getUnChecklistFromDatabaseToListView(){
+        return ChecklistRepository.get().getUnChecked().observe(viewLifecycleOwner){ checklist ->
+            checklist.let {
+                histOrOngoRecView.adapter = ChecklistAdapter(checklist)
             }
         }
     }
@@ -41,7 +78,6 @@ class ViewFragment : Fragment() {
         val dateCheck: TextView = itemView.dateText
         val checkoutCheck: TextView = itemView.checkoutText
         val noteCheck: TextView = itemView.noteText
-        val checkCheck: CheckBox = itemView.checkBoxButton
 
         var idCheck = ""
 
@@ -61,7 +97,7 @@ class ViewFragment : Fragment() {
             holder.dateCheck.text = checks[position].date
             holder.checkoutCheck.text = checks[position].checkout
             holder.noteCheck.text = checks[position].notes
-            holder.checkCheck.isChecked = checks[position].checked
+
             holder.idCheck = checks[position].id.toString()
 
         }

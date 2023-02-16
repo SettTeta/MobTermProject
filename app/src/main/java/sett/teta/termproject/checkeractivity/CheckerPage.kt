@@ -44,7 +44,6 @@ class CheckerPage : AppCompatActivity() {
         val dateCheck: TextView = itemView.dateText
         val checkoutCheck: TextView = itemView.checkoutText
         val noteCheck: TextView = itemView.noteText
-        val checkCheck: CheckBox = itemView.checkBoxButton
 
         var idCheck = ""
 
@@ -71,7 +70,7 @@ class CheckerPage : AppCompatActivity() {
             holder.dateCheck.text = checks[position].date
             holder.checkoutCheck.text = checks[position].checkout
             holder.noteCheck.text = checks[position].notes
-            holder.checkCheck.isChecked = checks[position].checked
+
             holder.idCheck = checks[position].id.toString()
 
         }
