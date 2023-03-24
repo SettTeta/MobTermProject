@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.util.UUID
 
 @Entity(tableName = "checklistDatabase")
-data class Check(@PrimaryKey var id: UUID,
+data class Check(@PrimaryKey var id: UUID = UUID.randomUUID(),
                  var room: String,
                  var date: String,
                  var checkout: String,

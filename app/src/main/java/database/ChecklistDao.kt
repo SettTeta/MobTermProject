@@ -14,6 +14,12 @@ interface ChecklistDao {
     @Query("SELECT * FROM checklistDatabase where id = (:id)")
     fun getCheck(id: UUID): LiveData<Check>
 
+    @Query("SELECT * FROM checklistDatabase where checked = true")
+    fun getChecked(): LiveData<List<Check>>
+
+    @Query("SELECT * FROM checklistDatabase where checked = false")
+    fun getUnChecked(): LiveData<List<Check>>
+
     @Insert
     fun insertCheck(c: Check)
 

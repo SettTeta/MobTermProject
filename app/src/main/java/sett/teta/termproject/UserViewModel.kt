@@ -3,8 +3,8 @@ package sett.teta.termproject
 import androidx.lifecycle.ViewModel
 
 class UserViewModel: ViewModel() {
-    private val userBank = listOf(Users("Morg", "Kief", true),
-                                  Users("Ming", "Teta", false)
+    private val userBank = listOf(Users("", "", true),
+                                  Users("m", "", false)
     )
 
     private var userIndex = -1
