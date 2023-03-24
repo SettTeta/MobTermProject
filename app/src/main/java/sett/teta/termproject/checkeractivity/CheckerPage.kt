@@ -15,7 +15,8 @@ import sett.teta.termproject.Check
 import sett.teta.termproject.R
 import sett.teta.termproject.checklistpackage.ChecklistRepository
 
-class CheckerPage : AppCompatActivity() {
+class
+CheckerPage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,8 @@ class CheckerPage : AppCompatActivity() {
     private fun getChecklistFromDatabaseToListView(){
         return ChecklistRepository.get().getUnChecked().observe(this){ checklist ->
             checklist.let {
-                checklistView.adapter = ChecklistAdapter(checklist)
+                checklistView.adapter = ChecklistAdapter(checklist.reversed()
+                )
             }
         }
     }

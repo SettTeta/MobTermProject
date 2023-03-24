@@ -49,26 +49,26 @@ class ViewFragment : Fragment() {
         }
     }
 
-    private fun getChecklistFromDatabaseToListView(){
-        return ChecklistRepository.get().getChecked().observe(viewLifecycleOwner){ checklist ->
+    private fun getChecklistFromDatabaseToListView() {
+        return ChecklistRepository.get().getChecked().observe(viewLifecycleOwner) { checklist ->
             checklist.let {
-                histOrOngoRecView.adapter = ChecklistAdapter(checklist)
+                histOrOngoRecView.adapter = ChecklistAdapter(checklist.reversed())
             }
         }
     }
 
-    private fun getAllChecklistFromDatabaseToListView(){
-        return ChecklistRepository.get().getChecklist().observe(viewLifecycleOwner){ checklist ->
+    private fun getAllChecklistFromDatabaseToListView() {
+        return ChecklistRepository.get().getChecklist().observe(viewLifecycleOwner) { checklist ->
             checklist.let {
-                histOrOngoRecView.adapter = ChecklistAdapter(checklist)
+                histOrOngoRecView.adapter = ChecklistAdapter(checklist.reversed())
             }
         }
     }
 
-    private fun getUnChecklistFromDatabaseToListView(){
-        return ChecklistRepository.get().getUnChecked().observe(viewLifecycleOwner){ checklist ->
+    private fun getUnChecklistFromDatabaseToListView() {
+        return ChecklistRepository.get().getUnChecked().observe(viewLifecycleOwner) { checklist ->
             checklist.let {
-                histOrOngoRecView.adapter = ChecklistAdapter(checklist)
+                histOrOngoRecView.adapter = ChecklistAdapter(checklist.reversed())
             }
         }
     }

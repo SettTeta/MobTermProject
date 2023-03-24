@@ -17,9 +17,10 @@
             android:layout_marginTop="60dp"
             android:layout_marginEnd="64dp"
             android:ems="10"
-            android:hint='"10-10-10"'
+            android:hint='dd/mm/yyyy'
             android:inputType="textPersonName"
             android:minHeight="48dp"
+            android:textColorHint="@color/material_dynamic_neutral60"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,9 +31,10 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="64dp"
             android:ems="10"
-            android:hint='"12AM"'
+            android:hint='00:00'
             android:inputType="textPersonName"
             android:minHeight="48dp"
+            android:textColorHint="@color/material_dynamic_neutral60"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/houseInput" />
 
@@ -44,6 +46,7 @@
             android:layout_marginEnd="12dp"
             android:text="Notes:"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/noteInput"
             app:layout_constraintTop_toBottomOf="@+id/checkoutTitle" />
 
@@ -53,8 +56,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
             android:layout_marginEnd="12dp"
-            android:text="Checkout:"
+            android:text="Time:"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/checkoutInput"
             app:layout_constraintTop_toBottomOf="@+id/houseTitle" />
 
@@ -64,8 +68,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
             android:layout_marginEnd="12dp"
-            android:text="House:"
+            android:text="Room:"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/houseInput"
             app:layout_constraintTop_toBottomOf="@+id/dateTitle" />
 
@@ -77,6 +82,7 @@
             android:layout_marginEnd="12dp"
             android:text="Date:"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/dateInput"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,9 +93,10 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="64dp"
             android:ems="10"
-            android:hint='"Set up 1 more bed"'
+            android:hint="Baby crib"
             android:inputType="textPersonName"
             android:minHeight="48dp"
+            android:textColorHint="@color/material_dynamic_neutral60"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkoutInput" />
 
@@ -100,9 +107,10 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="64dp"
             android:ems="10"
-            android:hint='"A1"'
+            android:hint='DB'
             android:inputType="textPersonName"
             android:minHeight="48dp"
+            android:textColorHint="@color/material_dynamic_neutral60"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dateInput" />
 
@@ -110,9 +118,10 @@
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="63dp"
+            android:layout_marginTop="32dp"
             android:text="Save"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/noteInput" />
 

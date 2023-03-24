@@ -18,14 +18,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/histOrOngoRecView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="395dp"
+            android:layout_height="554dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/historyButton" />
+            app:layout_constraintTop_toBottomOf="@+id/ongoingButton"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/historyButton"
@@ -33,28 +34,26 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="History"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/ongoingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="210dp"
+            android:layout_height="56dp"
             android:text="Ongoing"
-            app:layout_constraintStart_toEndOf="@+id/historyButton"
+            app:layout_constraintEnd_toStartOf="@+id/completedButton"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/completedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="209dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="9dp"
             android:text="Completed"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ongoingButton"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
