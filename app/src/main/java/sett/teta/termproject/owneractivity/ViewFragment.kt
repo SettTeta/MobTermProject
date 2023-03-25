@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_view_history.*
 import sett.teta.termproject.Check
 import sett.teta.termproject.R
 import sett.teta.termproject.checklistpackage.ChecklistRepository
+import java.util.UUID
 
 class ViewFragment : Fragment() {
 
@@ -42,10 +43,12 @@ class ViewFragment : Fragment() {
 
         ongoingButton.setOnClickListener {
             getUnChecklistFromDatabaseToListView()
+            typeViewTextView.text = "Ongoing"
         }
 
         completedButton.setOnClickListener {
             getChecklistFromDatabaseToListView()
+            typeViewTextView.text = "Completed"
         }
     }
 
@@ -73,7 +76,7 @@ class ViewFragment : Fragment() {
         }
     }
 
-    inner class ChecklistViewHolder(view: View): RecyclerView.ViewHolder(view){
+    inner class ChecklistViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener{
         val roomCheck: TextView = itemView.roomText
         val dateCheck: TextView = itemView.dateText
         val checkoutCheck: TextView = itemView.checkoutText
@@ -82,7 +85,11 @@ class ViewFragment : Fragment() {
         var idCheck = ""
 
         init {
+            itemView.setOnClickListener(this)
+        }
 
+        override fun onClick(v: View?) {
+            ChecklistRepository.get().deleteCheck(UUID.fromString(idCheck))
         }
     }
 

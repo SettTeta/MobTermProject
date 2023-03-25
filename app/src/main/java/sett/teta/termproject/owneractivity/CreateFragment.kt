@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_create_check.*
 import sett.teta.termproject.Check
 import sett.teta.termproject.R
@@ -40,9 +41,21 @@ class CreateFragment : Fragment() {
         saveCheckout: String,
         saveNotes: String
     ) {
+        if (saveHouse.isEmpty() || saveDate.isEmpty() || saveCheckout.isEmpty() || saveNotes.isEmpty()) {
+            Toast.makeText(requireContext(), "Please fill all required fields", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val saveCheck = Check(UUID.randomUUID(),saveHouse, saveDate, saveCheckout, saveNotes, false)
         ChecklistRepository.get().addCheck(saveCheck)
+        Toast.makeText(requireContext(), "Check successfully created", Toast.LENGTH_SHORT).show()
 
+        houseInput.text.clear()
+        dateInput.text.clear()
+        checkoutInput.text.clear()
+        noteInput.text.clear()
     }
 
+
 }
+
