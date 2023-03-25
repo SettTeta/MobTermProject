@@ -1,11 +1,13 @@
 package sett.teta.termproject.owneractivity
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_checker_page.*
@@ -89,7 +91,19 @@ class ViewFragment : Fragment() {
         }
 
         override fun onClick(v: View?) {
-            ChecklistRepository.get().deleteCheck(UUID.fromString(idCheck))
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setMessage("Are you sure you want to delete...    Room:${roomCheck.text} - Time:${checkoutCheck.text} - Date:${dateCheck.text}?")
+                .setCancelable(false)
+                .setPositiveButton("Yes") { dialog, _ ->
+                    ChecklistRepository.get().deleteCheck(UUID.fromString(idCheck))
+                    Toast.makeText(requireContext(), "Item deleted", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
         }
     }
 
